@@ -13,15 +13,14 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of(:email).case_insensitive }
     it { should validate_confirmation_of(:password) }
     it { should allow_value("example@domain.com").for(:email) }
-    it {should respond_to(:auth_token)}
-    it {should validate_uniqueness_of(:auth_token)}
+    it { should respond_to(:auth_token)}
+    it { should validate_uniqueness_of(:auth_token)}
   end
   describe "#generate_authentication_token!" do
     before { @user = FactoryGirl.build(:user)}
 
-
     it "generates a unique token" do
-      Devise.stub(:friendly_token).and_return("auniquentoken123")
+      allow(Devise).to receive(:friendly_token).and_return("auniquentoken123")
       @user.generate_authentication_token!
       expect(@user.auth_token).to eq "auniquentoken123"
     end
