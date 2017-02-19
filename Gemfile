@@ -26,6 +26,7 @@ group :development, :test do
   gem 'ffaker', '~> 2.4'
   gem 'byebug', platform: :mri
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
+  gem 'rspec-collection_matchers'
   gem 'capybara', '~> 2.12'
 end
 
